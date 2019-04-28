@@ -1,0 +1,440 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Stock Data Repo",
+        "description": "Swagger UI for Stoch Data Repo",
+        "termsOfService": "http://swagger.io/terms/"
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "User",
+            "description": "API for User"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "User Login",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "User Login Request",
+                        "schema": {
+                            "$ref": "#/definitions/LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Login success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "User does not exists",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/registerUser": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "User Registration",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "User Registration Request",
+                        "schema": {
+                            "$ref": "#/definitions/UserRegistrationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Registration success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/company/{name}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get List of prices wrt Comapny",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "an authorization header",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id"
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Company name"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Prices success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/price/{fromDate}/{toDate}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get List of Prices",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "an authorization header",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id"
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "path",
+                        "description": "From Date",
+                        "example": "2014-10-04"
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "path",
+                        "description": "To Date",
+                        "example": "2014-10-02"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Prices success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/stock/{symbol}/price/{fromDate}/{toDate}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get List of Prices",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "an authorization header",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id"
+                    },
+                    {
+                        "name": "symbol",
+                        "in": "path",
+                        "description": "List of symbols"
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "path",
+                        "description": "From Date",
+                        "example": "2014-10-04"
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "path",
+                        "description": "To Date",
+                        "example": "2014-10-02"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Prices success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}/ticker/{symbol}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get List of Prices for ticker",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-access-token",
+                        "in": "header",
+                        "description": "an authorization header",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id"
+                    },
+                    {
+                        "name": "symbol",
+                        "in": "path",
+                        "description": "List of symbols"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Prices for ticker success response",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Something went wrong",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Empty field in request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error response from DB",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LoginRequest": {
+            "properties": {
+                "email": {
+                    "required": true,
+                    "type": "string",
+                    "example": "user@slicepay.com"
+                },
+                "password": {
+                    "required": true,
+                    "type": "string",
+                    "example": "User@123"
+                }
+            }
+        },
+        "UserRegistrationRequest": {
+            "properties": {
+                "email": {
+                    "required": true,
+                    "type": "string",
+                    "example": "user@slicepay.com"
+                },
+                "password": {
+                    "required": true,
+                    "type": "string",
+                    "example": "User@123"
+                },
+                "f_name": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Ajay"
+                },
+                "m_name": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Kumar"
+                },
+                "l_name": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Gupta"
+                }
+            }
+        },
+        "SuccessResponse": {
+            "properties": {
+                "message": {
+                    "example": "Success message!"
+                },
+                "success": {
+                    "type": "bool",
+                    "example": true
+                }
+            }
+        },
+        "ErrorResponse": {
+            "properties": {
+                "error": {
+                    "example": "contains error object or message"
+                },
+                "success": {
+                    "type": "bool",
+                    "example": false
+                }
+            }
+        }
+    }
+}

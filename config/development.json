@@ -1,0 +1,8 @@
+{
+    "General": {
+      "port": 5000,
+      "csrfKey": "omsahyiannk",
+      "secretKey": "humsenahopayega",
+      "dbConfig": "mongodb://localhost:27017/stockdataDB"
+    }
+  }
